@@ -1,0 +1,88 @@
+#include<stdio.h>
+#include<ctype.h>
+#include<conio.h>
+void first(char[],char );
+void add(char[],char);
+int n;
+char prod[10][10];
+void main()
+{
+    int i;
+    char choice;
+    char c;
+    char result[20];
+    clrscr();
+    printf("Enter the number of productions :");
+    scanf(" %d",&n);
+    for(i=0;i<n;i++)
+    {
+	printf("Enter productions No. %d : ",i+1);
+	scanf(" %s",prod[i]);
+    }
+    do
+    {
+	printf("\n Find the FIRST of :");
+	scanf(" %c",&c);
+	first(result,c);
+	printf("\n FIRST(%c)= { ",c);
+	for(i=0;result[i]!='\0';i++)
+	printf(" %c ",result[i]);
+	printf("}\n");
+	 printf("press '1' to continue : ");
+	scanf(" %c",&choice);
+    }
+    while(choice=='1');
+}
+
+void first(char* Result,char c)
+{
+    int i,j,k;
+    char subResult[20];
+    int foundEpsilon;
+    subResult[0]='\0';
+    Result[0]='\0';
+    if(!(isupper(c)))
+    {
+	add(Result,c);
+    }
+    for(i=0;i<n;i++)
+    {
+	if(prod[i][0]==c)
+	{
+ if(prod[i][2]=='$') add(Result,'$');
+
+      else
+	    {
+		j=2;
+		while(prod[i][j]!='\0')
+		{
+		foundEpsilon=0;
+		first(subResult,prod[i][j]);
+		for(k=0;subResult[k]!='\0';k++)
+		    add(Result,subResult[k]);
+		 for(k=0;subResult[k]!='\0';k++)
+		     if(subResult[k]=='$')
+		     {
+			 foundEpsilon=1;
+			 break;
+		     }
+
+		 if(!foundEpsilon)
+		     break;
+		 j++;
+		}
+	    }
+    }
+}
+ return ;
+}
+
+void add(char Result[],char val)
+{
+    int k;
+    for(k=0 ;Result[k]!='\0';k++)
+	if(Result[k]==val)
+	    return ;
+    Result[k]=val;
+    Result[k+1]='\0';
+}
