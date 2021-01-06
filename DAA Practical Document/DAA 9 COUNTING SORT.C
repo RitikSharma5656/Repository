@@ -1,3 +1,12 @@
+Name : Ritik Sharma
+Roll No.: 1816110164
+Year : 3rd
+Section : C
+Branch : CSE
+
+
+
+
 #include<stdio.h>
 #include<conio.h>
 
