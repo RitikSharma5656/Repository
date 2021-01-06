@@ -1,3 +1,13 @@
+                                                                             
+                                                                       Name : Ritik Sharma
+                                                                       Roll No.: 1816110164
+                                                                       Year : 3rd
+                                                                       Section : C
+                                                                       Branch : CSE
+
+
+
+
 #include <stdio.h>
 int MatrixChainMultuplication(int arr[], int n) {
    int minMul[n][n];
