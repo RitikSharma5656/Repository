@@ -7,8 +7,6 @@ Branch : CSE
 
 
 
-
-
 n=int(input('enter the size of list'))
 l=[]
 for i in range(0,n):
